@@ -13,7 +13,7 @@ int prime (int n) {
 }
 void main () {
     int i;
-    for (i =2; i <50; i++)
+    for (i =2; i <30; i++)
     if (prime(i) == 1)
         printf("%d\n",i);
     else
