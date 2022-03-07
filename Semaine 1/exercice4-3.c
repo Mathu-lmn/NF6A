@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
     char car = 'd';
     char car2 = 'r';
     int sum = car + car2;

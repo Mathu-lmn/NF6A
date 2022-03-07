@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main() { 
+int main()
+{
     float i = 44.56;
     float j = 64.34;
 

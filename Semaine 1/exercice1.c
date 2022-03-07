@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 
-int main() {
+int main()
+{
     printf("Hello World !\n");
     /*time
     time_t now;
