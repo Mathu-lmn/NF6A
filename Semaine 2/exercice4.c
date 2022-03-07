@@ -4,14 +4,13 @@
 int num,digit,res;
 
 bool iszero(int num) {
-    if (num>1) {
+    if (num>0) {
         digit = num%10;
         if (digit == 0)
-            res = 1;
+            return 1;
         else return iszero(num/10);
     }
     else return 0;
-    return res;
 }
 int main() {
     printf("Enter a number :");
