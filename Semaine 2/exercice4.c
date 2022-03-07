@@ -4,13 +4,13 @@
 int num,digit,res;
 
 bool iszero(int num) {
-    if (num>0) {
+    if (num>1) {
         digit = num%10;
         if (digit == 0)
             res = 1;
         else return iszero(num/10);
     }
-    else return 1;
+    else return 0;
     return res;
 }
 int main() {
