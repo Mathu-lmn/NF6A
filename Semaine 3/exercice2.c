@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
@@ -6,7 +7,8 @@ int main()
     int upper = 0, lower = 0, number = 0, whitesp = 0;
     printf("Write the sentence : ");
     gets(sentence);
-    for (i = 0; i < sentence[i] != '\0'; i++)
+    int l = strlen(sentence);
+    for (i = 0; i < l; i++)
     {
         if (sentence[i] >= 'A' && sentence[i] <= 'Z')
             upper++;
