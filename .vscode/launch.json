@@ -9,9 +9,9 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "c:/Mathurin/UTT/NF6A/Semaine 3",
+      "cwd": "c:/Mathurin/UTT/NF6A",
       "environment": [],
-      "program": "c:/Mathurin/UTT/NF6A/Semaine 3/build/Debug/outDebug",
+      "program": "c:/Mathurin/UTT/NF6A/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
