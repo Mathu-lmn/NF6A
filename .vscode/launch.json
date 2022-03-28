@@ -5,9 +5,7 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [
-        ""
-      ],
+      "args": [],
       "stopAtEntry": false,
       "cwd": "c:/Mathurin/UTT/NF6A",
       "environment": [],

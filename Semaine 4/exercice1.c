@@ -1,107 +1,87 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> 
 
-
-void enterVector(int n, double *vecteur[]) {
+void enterVector(int n, int *vecteur[]) {
     int i;
-
-    *vecteur = malloc(n * sizeof(double));
-    if (*vecteur == NULL) {
-        printf("Can't allocate memory");
-        exit(0);
-    }
-
+    *vecteur = malloc(n * sizeof(int));
+    
     for (i = 0; i < n; i++) {
         printf("Enter element n%d\n", (i + 1));
-        scanf("%lf", &(*vecteur)[i]);
+        scanf("%d", &(*vecteur)[i]);
     }
 }
 
-
-void printVector(int n, double vecteur[]) {
+void printVector(int n, int vecteur[]) {
     int i;
     for (i = 0; i < n; i++) {
-        printf("%lf\n", vecteur[i]);
+        printf("%d\n", vecteur[i]);
     }
 }
 
-
-double *sumVector(int n, double *A, double *B) {
+int *sumVector(int n, int *A, int *B){
     int i;
-    double *vecteur;
-
-    vecteur = malloc(n * sizeof(double));
-    if (vecteur == NULL) {
-        printf("Can't allocate memory");
-        exit(0);
-    }
-
+    int *vector;
+    vector = malloc(n * sizeof(int));
+    
     for (i = 0; i < n; i++) {
-        vecteur[i] = A[i] + B[i];
+        vector[i] = A[i] + B[i];
     }
-    return vecteur;
+    return vector;
 }
 
-
-double *substractVector(int n, double *A, double *B) {
+int *subVector(int n, int *A, int *B){
     int i;
-    double *vecteur;
+    int *vector;
+    vector = malloc(n * sizeof(int));
 
-    vecteur = malloc(n * sizeof(double));
-    if (vecteur == NULL) {
-        printf("Can't allocate memory");
-        exit(0);
+    for (i = 0; i < n; i++){
+        vector[i] = A[i] - B[i];
     }
-
-    for (i = 0; i < n; i++) {
-        vecteur[i] = A[i] - B[i];
-    }
-    return vecteur;
+    return vector;
 }
 
-double prodscalVector(int n, double *A, double *B) {
+int prodscal(int n, int *A, int *B) {
     int i;
-    double prod;
+    int scal;
 
-    prod = 0;
+    scal = 0;
     for (i = 0; i < n; i++) {
-        prod += A[i] * B[i];
+        scal += A[i] * B[i];
     }
-    return prod;
+    return scal;
 }
 
-int main(int argc, char const *argv[]) {
+
+int main() {
     int n;
-    double *A = NULL;
-    double *B = NULL;
-    double *C = NULL;
-
-    printf("Enter the number of elements of the vectors\n");
+    int *A = NULL;
+    int *B = NULL;
+    int *C = NULL;
+    printf("Enter the number of elements in the vectors : ");
     scanf("%d", &n);
-    printf("Enter vector A\n");
+    printf("Vector A :\n");
     enterVector(n, &A);
-    printf("Enter vector B\n");
-    enterVector(n, &B);
-    printf("_______________________\n\n");
-
+    printf("\nVector B :\n");
+    enterVector(n, &B);   
+    printf("_______________________\n");
+    
     printf("\nA=\n");
     printVector(n, A);
     printf("\nB=\n");
     printVector(n, B);
-
+    
     printf("\nA+B=\n");
     C = sumVector(n, A, B);
     printVector(n, C);
     free(C);
 
     printf("\nA-B=\n");
-    C = substractVector(n, A, B);
+    C = subVector(n, A, B);
     printVector(n, C);
     free(C);
-
-    printf("\nA.B=%lf\n", prodscalVector(n, A, B));
+    
+    printf("\nA.B=%d\n", prodscal(n, A, B));
 
     free(A);
     free(B);
-    return 0;
 }

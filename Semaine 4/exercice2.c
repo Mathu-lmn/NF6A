@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Etudiant {
+struct Student {
     char *nom;
     char *prenom;
     float median;
@@ -46,8 +46,8 @@ void saisiePhrase(char *chaine[], int tailleMax) {
     free(chaineTmp);
 }
 
-struct Etudiant saisieEtudiant() {
-    struct Etudiant etu;
+struct Student StudentAssign() {
+    struct Student etu;
 
     printf("Student's Surname :\n");
     saisiePhrase(&etu.prenom, 255);
@@ -67,33 +67,38 @@ struct Etudiant saisieEtudiant() {
     return etu;
 }
 
-int saisieListeEtudiant(struct Etudiant *etu[]) {
+int StudentListIput(struct Student *etu[]) {
     int i, nbrEtu;
 
     printf("Enter the number of students :\n");
     scanf("%d", &nbrEtu);
 
-    *etu = malloc(nbrEtu * sizeof(struct Etudiant));
-    if (*etu == NULL) {
-        printf("Can't allocate memory");
-        exit(0);
-    }
+    *etu = malloc(nbrEtu * sizeof(struct Student));
 
     for (i = 0; i < nbrEtu; ++i) {
         printf("------ Students input %d/%d ------\n", i + 1, nbrEtu);
-        (*etu)[i] = saisieEtudiant();
+        (*etu)[i] = StudentAssign();
     }
 
     return nbrEtu;
 }
 
-void trierParNomListeEtudiant(struct Etudiant *etu[], int nbrEtu) {
-    struct Etudiant temp;
+
+void printStudentList(struct Student *etu[], int nbrEtu) {
+
+    int i;
+    printf("Name Surname | Median Final | Average\n\n");
+    for (i = 0; i < nbrEtu; i++)
+    {
+        printf("%s %s | %f %f | %f\n", (*etu)[i].nom, (*etu)[i].prenom, (*etu)[i].median, (*etu)[i].final, (*etu)[i].moy);
+    }
+}
+
+void sortByName(struct Student *etu[], int nbrEtu) {
+    struct Student temp;
     int i, j, cmp;
 
     for (i = 0; i < nbrEtu - 1; i++) {
-        // Pour chaque element de la liste
-        // parcours le reste de la liste pour trouver le plus petit restant
         for (j = i + 1; j < nbrEtu; j++) {
             /// Comparaison des noms
             cmp = strcmp((*etu)[i].nom, (*etu)[j].nom);
@@ -111,13 +116,13 @@ void trierParNomListeEtudiant(struct Etudiant *etu[], int nbrEtu) {
     }
 }
 
-void trierParMoyListeEtudiant(struct Etudiant *etu[], int nbrEtu) {
-    struct Etudiant temp;
+void sortByAverage(struct Student *etu[], int nbrEtu) {
+    struct Student temp;
     int i, j;
 
     for (i = 0; i < nbrEtu - 1; i++) {
         for (j = i + 1; j < nbrEtu; j++) {
-            if ((*etu)[i].moy > (*etu)[j].moy) {
+            if ((*etu)[i].moy < (*etu)[j].moy) {
                 temp = (*etu)[i];
                 (*etu)[i] = (*etu)[j];
                 (*etu)[j] = temp;
@@ -126,33 +131,22 @@ void trierParMoyListeEtudiant(struct Etudiant *etu[], int nbrEtu) {
     }
 }
 
-
-void afficherListeEtudiant(struct Etudiant *etu[], int nbrEtu) {
-
-    int i;
-    printf("Name Surname | Median Final | Average\n");
-    for (i = 0; i < nbrEtu; i++)
-    {
-        printf("%s %s | %f %f | %f\n", (*etu)[i].nom, (*etu)[i].prenom, (*etu)[i].median, (*etu)[i].final, (*etu)[i].moy);
-    }
-}
-
-int main(int argc, char const *argv[]) {
-    struct Etudiant *etu;
+int main() {
+    struct Student *etu;
     int nbrEtu;
-
-    nbrEtu = saisieListeEtudiant(&etu);
+    
+    nbrEtu = StudentListIput(&etu);
     printf("------------------------\n");
     printf("--------- Input --------\n");
-    afficherListeEtudiant(&etu, nbrEtu);
+    printStudentList(&etu, nbrEtu);
 
-    printf("----- List by Name -----\n");
-    trierParNomListeEtudiant(&etu, nbrEtu);
-    afficherListeEtudiant(&etu, nbrEtu);
+    printf("\n------------------------\n");
+    printf("---- Sorted by name ----\n");
+    sortByName(&etu, nbrEtu);
+    printStudentList(&etu, nbrEtu);
 
-    printf("----- Liste by average (ascending) -----\n");
-    trierParMoyListeEtudiant(&etu, nbrEtu);
-    afficherListeEtudiant(&etu, nbrEtu);
-
-    return 0;
+    printf("\n------------------------\n");
+    printf("Grade by descending order \n");
+    sortByAverage(&etu, nbrEtu);
+    printStudentList(&etu, nbrEtu);
 }
