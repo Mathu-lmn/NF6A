@@ -67,7 +67,7 @@ struct Student StudentAssign() {
     return etu;
 }
 
-int StudentListIput(struct Student *etu[]) {
+int StudentListInput(struct Student *etu[]) {
     int i, nbrEtu;
 
     printf("Enter the number of students :\n");
@@ -135,7 +135,7 @@ int main() {
     struct Student *etu;
     int nbrEtu;
     
-    nbrEtu = StudentListIput(&etu);
+    nbrEtu = StudentListInput(&etu);
     printf("------------------------\n");
     printf("--------- Input --------\n");
     printStudentList(&etu, nbrEtu);
