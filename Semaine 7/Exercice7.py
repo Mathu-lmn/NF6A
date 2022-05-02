@@ -24,4 +24,4 @@ for i in range(len(list)):
 
 print("The number of vowels is:", vowel_count1)
 
-print("There are {} words with 2 or more vowels".format(words_with_2_or_more_vowels))
+print("There are", words_with_2_or_more_vowels, "word(s) with 2 or more vowels")
