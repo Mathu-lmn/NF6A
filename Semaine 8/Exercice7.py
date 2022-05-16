@@ -23,7 +23,7 @@ def get_oldest_user():
             oldest_user_name = f"{repos['results'][i]['name']['first']} {repos['results'][i]['name']['last']}"
     print(f"The oldest user is {oldest_user_name} with {oldest_user} years old")
 
-# get_oldest_user()
+get_oldest_user()
 
 def male_percentage():
     male_count = 0
