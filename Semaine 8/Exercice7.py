@@ -1,7 +1,6 @@
 import requests
 import json
 import cv2
-import sys
 import numpy as np
 
 response = requests.get('https://randomuser.me/api/?results=10')
