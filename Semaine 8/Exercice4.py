@@ -40,7 +40,7 @@ display_movies(only_available)
 
 def display_movies_sorted_by_imdb():
     Movies.sort(key=lambda x: x["imdb"], reverse=True)
-    display_movies(only_available)
+    display_movies(Movies)
 
 def rent_movie():
     movie_name = input("Enter the name of the movie you want to rent: ")
