@@ -20,7 +20,7 @@ for i in range(301, 319):
 
 def is_room_free(room_type, date_from, date_to):
     for room in Hotel[room_type]:
-        if room[1] == []:
+        if len(room[1]) == 0:
             j = True
         else:
             if room[1][-1][0] <= date_from <= room[1][-1][1] or room[1][-1][0] <= date_to <= room[1][-1][1]:
@@ -49,7 +49,7 @@ def create_reservation():
     else:
         for room in Hotel[room_type]:
             print("Checking room", room[0])
-            if room[1] == []:
+            if len(room[1]) == 0:
                 room[1].append((date_from, date_to))
                 print("Your room has been booked")
                 return
@@ -85,7 +85,7 @@ def room_invoice():
 
 def edit_hotel():
     choice = input("Would you like to add a room or delete a room? ")
-    if choice == "add":
+    if "add" in choice:
         room_type = input("What type of room would you like to add? ")
         if room_type not in Hotel:
             print("We do not have that room type")
@@ -95,7 +95,7 @@ def edit_hotel():
             Hotel[room_type].append((room_number, []))
             print("Room added")
             return
-    elif choice == "delete":
+    elif "delete" in choice:
         j = False
         room = int(input("Enter the room number: "))
         for room_type in Hotel:
