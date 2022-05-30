@@ -30,7 +30,7 @@ def get_max_prod():
             if df.at[i, "datetime"][:10] == day:
                 day_prod.append(df.at[i, "P_GEN_MAX"])
         if len(day_prod) == 0:
-            print("There is no production on this day")
+            print("There was no production on this day")
         else:
             print(f'Max production on {day} was {max(day_prod)} kW')
 
@@ -47,7 +47,7 @@ def get_average_prod():
             if df.at[i, "datetime"][:10] == day:
                 day_av.append(df.at[i, "P_GEN"])
         if len(day_av) == 0:
-            print("There is no production on this day")
+            print("There was no production on this day")
         else:
             print(f'Average production on {day} was around {round(sum(day_av)/len(day_av),3)} kW')
 
