@@ -10,7 +10,7 @@ def get_time_covered():
 
 get_time_covered()
 
-# Fixing Null values
+# Fixing null values
 df.replace(0.002, 0, inplace=True)
 
 # Adding new column
@@ -25,14 +25,14 @@ def get_max_prod():
     if df["datetime"][1] <= day <= df.at[df.index[-1], "datetime"]:
         print("The day you entered is not in the dataframe")
     else:
-        day_prod = []
+        production = []
         for i in range(len(df)):
             if df.at[i, "datetime"][:10] == day:
-                day_prod.append(df.at[i, "P_GEN_MAX"])
-        if len(day_prod) == 0:
+                production.append(df.at[i, "P_GEN_MAX"])
+        if len(production) == 0:
             print("There was no production on this day")
         else:
-            print(f'Max production on {day} was {max(day_prod)} kW')
+            print(f'Max production on {day} was {max(production)} kW')
 
 get_max_prod()
 
@@ -42,13 +42,13 @@ def get_average_prod():
     if df["datetime"][1] <= day <= df.at[df.index[-1], "datetime"]:
         print("The day you entered is not in the dataframe")    
     else:    
-        day_av = []
+        average = []
         for i in range(len(df)):
             if df.at[i, "datetime"][:10] == day:
-                day_av.append(df.at[i, "P_GEN"])
-        if len(day_av) == 0:
+                average.append(df.at[i, "P_GEN"])
+        if len(average) == 0:
             print("There was no production on this day")
         else:
-            print(f'Average production on {day} was around {round(sum(day_av)/len(day_av),3)} kW')
+            print(f'Average production on {day} was around {round(sum(average)/len(average),3)} kW')
 
 get_average_prod()
