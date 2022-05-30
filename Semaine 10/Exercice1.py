@@ -18,6 +18,7 @@ def similarity_matrix():
         matrix.append([])
         for j in range(len(content)):
             matrix[i].append(similarity(content[i], content[j]))
+    print("The similarity matrix between the sentences is : \n")
     for i in matrix:
         print(*i,sep="\t")
 
@@ -39,7 +40,7 @@ def get_largest_smallest_similarity():
                 if similarity(content[i], content[j]) < smallest:
                     smallest = similarity(content[i], content[j])
                     small = [i, j]
-    print("The sentences with the most similarities are:", large)
+    print("\nThe sentences with the most similarities are:", large)
     print("The sentences with the least similarities are:", small)
 
 get_largest_smallest_similarity()
@@ -52,6 +53,6 @@ def average_similarity():
                 continue
             else:
                 sum += similarity(content[i], content[j])
-    print("The average degree of similarity of the file is :", round(sum / (len(content) * (len(content) - 1)), 3))
+    print("\nThe average degree of similarity of the file is :", round(sum / (len(content) * (len(content) - 1)), 3))
 
 average_similarity()
