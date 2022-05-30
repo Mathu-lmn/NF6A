@@ -12,8 +12,10 @@ get_time_covered()
 
 # Fixing Null values
 df.replace(0.002, 0, inplace=True)
+
 # Adding new column
 df["P_GEN"] = (df["P_GEN_MAX"]+df["P_GEN_MIN"])/2
+
 # Printing the fixes and additions to new file
 df.to_csv("Semaine 10\Cleaned ForestRoad PV 3kwp.csv", sep=";", index=False)
 
