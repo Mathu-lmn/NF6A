@@ -25,8 +25,8 @@ def class_standard_deviation():
     total = 0
     for i in range(len(Students)):
         total += (Students[i][1] - class_average())**2
-    standard_deviation = total / len(Students)
-    print("The standard deviation is :",standard_deviation**0.5)
+    standard_deviation = (total / len(Students))**0.5
+    print("The standard deviation is :",standard_deviation)
 
 class_standard_deviation()
 
@@ -68,8 +68,9 @@ def modify_grades():
             if grade > 20 or grade < 0:
                 print("Grade must be between 0 and 20")
                 modify_grades()
-            Students[i][1] = grade
-            print("The student's grade has been modified")
-            return
+            else:
+                Students[i][1] = grade
+                print("The student's grade has been modified")
+                return
     print("This student is not in the class")
     modify_grades()

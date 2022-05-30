@@ -8,7 +8,7 @@ def similarity(s1, s2):
     s1 = s1.split()
     s2 = s2.split()
     n = list(dict.fromkeys(set(s1).union(s2)))
-    intersection = list(dict.fromkeys(set(s1).intersection(s2))) 
+    intersection = set(s1)&set(s2)
     return round(len(intersection) / len(n),3)
 
 
