@@ -32,6 +32,7 @@ class_standard_deviation()
 
 def lowest_grade():
     lowest = Students[0][1]
+    name = Students[0][0]
     for i in range(len(Students)):
         if Students[i][1] < lowest:
             lowest = Students[i][1]
@@ -42,13 +43,17 @@ lowest_grade()
 
 def highest_grade():
     highest = Students[0][1]
+    name = Students[0][0]
     for i in range(len(Students)):
         if Students[i][1] > highest:
             highest = Students[i][1]
             name = Students[i][0]
     print(f"{name} has the highest grade with {highest}/20")
 
+highest_grade()
+
 def get_student_ranking():
+    print("\nClass ranking :")
     name = input("What is the student's name? ")
     Students.sort(key=lambda x: x[1])
     for i in range(len(Students)):
@@ -61,6 +66,7 @@ def get_student_ranking():
 get_student_ranking()
 
 def modify_grades():
+    print("\nEdit a student's grade : ")
     name = input("What is the student's name? ")
     for i in range(len(Students)):
         if Students[i][0] == name:
@@ -73,4 +79,4 @@ def modify_grades():
                 print("The student's grade has been modified")
                 return
     print("This student is not in the class")
-    modify_grades()
+modify_grades()
